@@ -6,7 +6,7 @@ class Annoucement(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(255), nullable=False)
-    message = db.Column(db.Text)
+    message = db.Column(db.Text, nullable=False)
     date = db.Column(db.Date)
     
 class AnnoucementSchema(ma.Schema):

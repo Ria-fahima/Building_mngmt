@@ -1,5 +1,6 @@
 from flask import Blueprint
 from models.user import User
+from models.complain import Complain
 from models.annoucements import Annoucement
 from datetime import date
 from init import db,bcrypt
@@ -24,18 +25,21 @@ def seed_db():
             f_name = 'Mickel',
             l_name = 'Rowston',
             email = 'admin@gmail.com',
-            fob_num = '3465',
+            fob_num = 3465,
             car_num = 'WRT-466',
             password = bcrypt.generate_password_hash('eggs').decode('utf-8'),
-            is_admin = True
+            is_admin = True,
+            unit = 100
         ),
         User(
             f_name = 'Ron',
             l_name = 'Sharma',
             email = 'ron35@gmail.com',
-            fob_num = '3186',
+            fob_num = 3186,
             car_num = 'AZW-BRB',
+            unit = 304,
             password = bcrypt.generate_password_hash('ronty').decode('utf-8'),
+            is_owner = True
         )
     ]
 
@@ -62,6 +66,25 @@ def seed_db():
     ]
 
     db.session.add_all(annoucements)
+    db.session.commit()
+
+
+    complains = [
+        Complain(
+            date = date.today(),
+            unit = 304,
+            title = 'Water hose pipe defect',
+            message = 'Unit 504 bathroom water pipe is defected. Need to repair it urgently.'
+        ),
+        Complain(
+            date = date.today(),
+            unit = 402,
+            title = 'noise from unit 603',
+            message = 'Loud noise is coming from unit 603 after midnight.'
+        )
+    ]
+
+    db.session.add_all(complains)
     db.session.commit()
 
     print('Tables seeded')
