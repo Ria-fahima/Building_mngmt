@@ -2,7 +2,8 @@ from flask import Blueprint,request
 from init import db
 from datetime import date
 from models.annoucements import Annoucement, AnnoucementSchema
-from flask_jwt_extended import jwt_required
+from models.comment import Comment, CommentSchema
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from controllers.auth_controller import authorize
 
 
@@ -15,7 +16,7 @@ def get_all_annoucements():
 
     stmt = db.select(Annoucement).order_by(Annoucement.date.desc())
     annoucements = db.session.scalars(stmt)
-    return AnnoucementSchema(many = True).dump(annoucements)
+    return AnnoucementSchema(many= True).dump(annoucements)
 
 
 @annoucement_bp.route('/<int:id>/')
@@ -38,7 +39,8 @@ def create_one_annoucement():
     annoucement = Annoucement(
         subject = data['subject'], 
         message = data['message'],
-        date = date.today()
+        date = date.today(),
+        user_id = get_jwt_identity()
     )
     db.session.add(annoucement)
     db.session.commit()
@@ -62,7 +64,7 @@ def delete_one_annoucement(id):
 @annoucement_bp.route('/<int:id>/', methods = ['PUT', 'PATCH'])
 @jwt_required()
 def update_one_annoucement(id):
-    authorize()
+    
 
     stmt = db.select(Annoucement).filter_by(id=id)
     annoucement = db.session.scalar(stmt)
@@ -74,3 +76,24 @@ def update_one_annoucement(id):
         return AnnoucementSchema().dump(annoucement)
     else:
         return {'error': f'Annoucement is not found with id {id}'}, 404
+
+
+
+@annoucement_bp.route('/<int:id>/comments',methods=['POST'])
+@jwt_required()
+def create_comment(id):
+    stmt = db.select(Annoucement).filter_by(id=id)
+    annoucement = db.session.scalar(stmt)
+    if annoucement:
+        comment = Comment(
+            message = request.json['message'],
+            user_id = get_jwt_identity(),
+            annoucement = annoucement,
+            date = date.today()
+        )
+        db.session.add(comment)
+        db.session.commit()
+        return CommentSchema().dump(comment), 201
+    else:
+        return {'error': f'annoucement not found with id {id}'}, 404
+    

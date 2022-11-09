@@ -21,7 +21,7 @@ def get_one_user(id):
     stmt = db.select(User).filter_by(id=id)
     user = db.session.scalar(stmt)
     if user:
-        return UserSchema(exclude=['password']).dump(user)
+        return UserSchema(many =True,exclude=['password']).dump(user)
     else:
         return {'error': f'user not found with unit {id}'}, 404
 
@@ -58,6 +58,6 @@ def update_one_user_info(id):
         user.fob_num = request.json.get('fob_num') or user.fob_num
         user.car_num = request.json.get('car_num') or user.car_num
         db.session.commit()
-        return UserSchema(exclude=['password']).dump(user)
+        return UserSchema(many= True,exclude=['password']).dump(user)
     else:
         return {'error': f'User not found with id {id}'}, 404
