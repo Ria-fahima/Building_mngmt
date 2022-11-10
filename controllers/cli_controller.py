@@ -2,7 +2,9 @@ from flask import Blueprint
 from models.user import User
 from models.complain import Complain
 from models.annoucements import Annoucement
+from models.staff import Staff
 from models.comment import Comment
+from models.resident import Resident
 from datetime import date
 from init import db,bcrypt
 
@@ -26,25 +28,80 @@ def seed_db():
             f_name = 'Mickel',
             l_name = 'Rowston',
             email = 'admin@gmail.com',
-            fob_num = 3465,
-            car_num = 'WRT-466',
-            password = bcrypt.generate_password_hash('eggs').decode('utf-8'),
-            is_admin = True,
-            unit = 100
+            # fob_num = 3465,
+            # car_num = 'WRT-466',
+            password = bcrypt.generate_password_hash('eggs').decode('utf-8')
+            # is_admin = True,
+            # unit = 100
         ),
         User(
             f_name = 'Ron',
             l_name = 'Sharma',
-            email = 'ron35@gmail.com',
-            fob_num = 3186,
-            car_num = 'AZW-BRB',
-            unit = 304,
-            password = bcrypt.generate_password_hash('ronty').decode('utf-8'),
-            is_owner = True
+            email = 'ron33@gmail.com',
+            # fob_num = 3186,
+            # car_num = 'AZW-BRB',
+            # unit = 304,
+            password = bcrypt.generate_password_hash('ronty').decode('utf-8')
+            # is_owner = True
+        ),
+        User(
+            f_name = 'John',
+            l_name = 'Waples',
+            email = 'john74@gmail.com',
+            # fob_num = 3186,
+            # car_num = 'AZW-BRB',
+            # unit = 304,
+            password = bcrypt.generate_password_hash('jin45').decode('utf-8')
+            # is_owner = True
+        ),User(
+            f_name = 'Betzy',
+            l_name = 'Wawn',
+            email = 'bet96@gmail.com',
+            # fob_num = 3186,
+            # car_num = 'AZW-BRB',
+            # unit = 304,
+            password = bcrypt.generate_password_hash('bee088').decode('utf-8')
+            # is_owner = True
         )
     ]
 
     db.session.add_all(users)
+    db.session.commit()
+
+    staffs = [
+        Staff(
+            role = "Manager",
+            is_admin = True,
+            user = users[0]
+        ),
+        Staff(
+            role = "Concierge",
+            user = users[1]
+        )
+
+    ]
+    db.session.add_all(staffs)
+    db.session.commit()
+
+
+    residents = [
+        Resident(
+            fob_num = 4867,
+            car_num = 'AQW-BRB',
+            unit = 304,
+            user = users[2],
+            staff = staffs[0]
+        ),
+        Resident(
+            fob_num = 5237,
+            car_num = 'D23-BRB',
+            unit = 514,
+            user = users[3],
+            staff = staffs[0]
+        )
+
+    ]
+    db.session.add_all(residents)
     db.session.commit()
 
 
@@ -52,19 +109,20 @@ def seed_db():
         Annoucement(
             subject = 'Christmas Dinner',
             message = 'Buffet Dinner at 5pm in the Royal Lounge. We will love to have you in our party.',
-            user = users[0],
+            staff = staffs[0],
             date = date.today()
         ),
+        
         Annoucement(
             subject = 'Annual Meeting',
             message = 'Meeting will start at 7pm. Everyone needs to be there for further development discussion in the building.',
-            user = users[1],
+            staff = staffs[0],
             date = date.today()
         ),
         Annoucement(
             subject = 'Fire Detector Check',
             message = 'Please book your time for the fire detector check in your apartment. The concierge will help you for the booking.',
-            user = users[0],
+            staff = staffs[0],
             date = date.today()
         )
     ]
@@ -74,21 +132,21 @@ def seed_db():
 
     comments = [
         Comment(
-            message = 'Comment 1',
-            user = users[0],
+            message = 'we will be there!',
+            user = users[3],
             annoucement = annoucements[0],
             date = date.today()
         ),
         Comment(
-            message = 'Comment 2',
-            user = users[0],
+            message = 'Sorry! I wont be able to join',
+            user = users[2],
             annoucement = annoucements[1],
             date = date.today()
         ),
         Comment(
-            message = 'Comment 3',
+            message = 'Please book your slot ASAP!',
             user = users[1],
-            annoucement = annoucements[1],
+            annoucement = annoucements[2],
             date = date.today()
         )
     ]
@@ -99,15 +157,13 @@ def seed_db():
     complains = [
         Complain(
             date = date.today(),
-            unit = 304,
-            user = users[0],
+            resident = residents[0],
             title = 'Water hose pipe defect',
             message = 'Unit 504 bathroom water pipe is defected. Need to repair it urgently.'
         ),
         Complain(
             date = date.today(),
-            unit = 402,
-            user = users[1],
+            resident = residents[1],
             title = 'noise from unit 603',
             message = 'Loud noise is coming from unit 603 after midnight.'
         )

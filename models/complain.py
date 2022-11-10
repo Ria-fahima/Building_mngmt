@@ -8,15 +8,16 @@ class Complain(db.Model):
     date = db.Column(db.Date)
     title = db.Column(db.String)
     message = db.Column(db.String, nullable=False)
-    unit = db.Column(db.Integer, nullable=False)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # code valid
+    resident_id = db.Column(db.Integer, db.ForeignKey('residents.id'), nullable=False)
 
-    user = db.relationship('User', back_populates='complains')
+    resident = db.relationship('Resident', back_populates='complains')
+    # code valid
 
 class ComplainSchema(ma.Schema):
-    user = fields.Nested('UserSchema', only=['f_name', 'l_name','email'])
+    resident = fields.Nested('ResidentSchema', exclude=['fob_num', 'car_num', 'complain'])
 
     class Meta:
-        fields = ('id', 'date', 'unit','title', 'message', 'user')
+        fields = ('id', 'date', 'unit','title', 'message', 'resident')
         ordered = True

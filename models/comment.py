@@ -16,7 +16,7 @@ class Comment(db.Model):
 
 
 class CommentSchema(ma.Schema):
-    user = fields.Nested('UserSchema', only=['f_name', 'l_name', 'email','unit'])
+    user = fields.Nested('UserSchema', only=['f_name', 'l_name', 'email'])
     annoucement = fields.Nested('AnnoucementSchema', exclude = ['user', 'comments'])
 
     class Meta:

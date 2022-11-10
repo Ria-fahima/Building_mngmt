@@ -16,15 +16,15 @@ def get_all_complains():
     return ComplainSchema(many = True).dump(complains)
 
 
-@complain_bp.route('/<int:unit>/')
+@complain_bp.route('/<int:id>/')
 @jwt_required()
-def get_one_complain(unit):
-    stmt = db.select(Complain).filter_by(unit=unit)
+def get_one_complain(id):
+    stmt = db.select(Complain).filter_by(id=id)
     complain = db.session.scalar(stmt)
     if complain:
         return ComplainSchema().dump(complain)
     else:
-        return {'error': f'No complain is found from unit {unit}'}, 404
+        return {'error': f'No complain is found with id {id}'}, 404
 
 
 

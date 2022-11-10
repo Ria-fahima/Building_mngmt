@@ -10,7 +10,7 @@ user_bp = Blueprint('users', __name__, url_prefix='/users')
 @jwt_required()
 def get_all_users():
 
-    stmt = db.select(User).order_by(User.unit.desc())
+    stmt = db.select(User)
     users = db.session.scalars(stmt)
     return UserSchema(many = True, exclude=['password']).dump(users)
 

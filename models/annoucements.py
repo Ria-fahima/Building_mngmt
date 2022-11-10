@@ -11,9 +11,11 @@ class Annoucement(db.Model):
     date = db.Column(db.Date)
 
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    staff_id = db.Column(db.Integer, db.ForeignKey('staffs.id'), nullable=False)
 
-    user = db.relationship('User', back_populates='annoucements')
+    # user = db.relationship('User', back_populates='annoucements')
+    staff = db.relationship('Staff', back_populates='annoucements')
     comments = db.relationship('Comment', back_populates='annoucement', cascade='all, delete')
 
 class AnnoucementSchema(ma.Schema):
