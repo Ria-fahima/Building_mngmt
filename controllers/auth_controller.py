@@ -11,14 +11,15 @@ auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 @auth_bp.route('/register/',methods=['POST'])
 def auth_register():
     try:
-
+        
+        data = UserSchema().load(request.json)
         #Load the posted user info 
         user = User(
-            f_name = request.json['f_name'],
-            l_name = request.json['l_name'],
-            email = request.json['email'],
+            f_name = data['f_name'],
+            l_name = data['l_name'],
+            email = data['email'],
             # unit = request.json['unit'],
-            password = bcrypt.generate_password_hash(request.json['password']).decode('utf-8')
+            password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
         )
         db.session.add(user)
         db.session.commit()

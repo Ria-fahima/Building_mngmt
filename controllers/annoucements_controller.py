@@ -27,7 +27,7 @@ def get_one_annoucement(id):
     if annoucement:
         return AnnoucementSchema().dump(annoucement)
     else:
-        return {'error': f'card not found with id {id}'}, 404
+        return {'error': f'annoucement not found with id {id}'}, 404
 
 
 @annoucement_bp.route('/',methods=['POST'])
@@ -40,7 +40,7 @@ def create_one_annoucement():
         subject = data['subject'], 
         message = data['message'],
         date = date.today(),
-        user_id = get_jwt_identity()
+        staff_id = get_jwt_identity()
     )
     db.session.add(annoucement)
     db.session.commit()
@@ -64,7 +64,7 @@ def delete_one_annoucement(id):
 @annoucement_bp.route('/<int:id>/', methods = ['PUT', 'PATCH'])
 @jwt_required()
 def update_one_annoucement(id):
-    
+    authorize()
 
     stmt = db.select(Annoucement).filter_by(id=id)
     annoucement = db.session.scalar(stmt)
