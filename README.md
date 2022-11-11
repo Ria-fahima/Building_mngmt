@@ -31,9 +31,16 @@ ORM(Object Relational Mapping) is a layer between the relational database and th
 * It sanitize the parameters if it is needed.
 * It fetches data and serialize it.
 * It secures the query.
+<br>
 **Advantages of ORM**
 * As ORM queries and manipulates data so no need to remember SQL commands.
 * For creating a portable format, data serialization is necessary which is done by ORM.
+<br>
+## Documentation of all endpoints API
+
+## ERD of the Building App
+![Screen Shot 2022-11-12 at 2 53 23 am](https://user-images.githubusercontent.com/105357829/201378873-adf6d1d9-027f-47c4-a69a-f7be8120c4df.png)
+
 
 
 
