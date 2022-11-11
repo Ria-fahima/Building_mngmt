@@ -18,4 +18,9 @@ Again, an admin of the app can add resident to the resident list and can delete 
 The admin can also add, delete or update any information of a staff from the user of the building app.
 <br> 
 A user can complain in this app which is convenient to the user.
+## Database System
+For the building management app, i have chosen **PostgreSQL Database System**. As it is a open source DBMS, it has a wide range of possibilities for further developement. Also a large number of communities use this. Modules can be developed by the users and it can be propsed to the community later. It can handle large quantity of data without crashing. In postgreSQL bugs can be identified easity so that it is easy to improve and upgrade. This system is also compatible with different types of data. For data serialization, ORM plays an important role. In PostgreSQL, a user does not need to learn ORM seperately to serialize the data. That's a huge benefit of using PostgreSQL. 
+
+
+
 
