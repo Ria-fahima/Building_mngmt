@@ -37,8 +37,18 @@ ORM(Object Relational Mapping) is a layer between the relational database and th
 * For creating a portable format, data serialization is necessary which is done by ORM.
 <br>
 ## Documentation of all endpoints API
-
+In the app, there are some API endpoints. Using those endpoints, certain operations can be done. 
+For checking the authetication of a user, there are two endpoints.
+<br>
+* When a user wants to register to the app,
+<br>
+127.0.0.1:8080/auth/register
+* When a user wants to login to the app,
+<br>
+127.0.0.1:8080/auth/login
+<br>
 ## ERD of the Building App
+<br>
 ![Screen Shot 2022-11-12 at 2 53 23 am](https://user-images.githubusercontent.com/105357829/201378873-adf6d1d9-027f-47c4-a69a-f7be8120c4df.png)
 
 
