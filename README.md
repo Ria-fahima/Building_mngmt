@@ -19,7 +19,25 @@ The admin can also add, delete or update any information of a staff from the use
 <br> 
 A user can complain in this app which is convenient to the user.
 ## Database System
-For the building management app, i have chosen **PostgreSQL Database System**. As it is a open source DBMS, it has a wide range of possibilities for further developement. Also a large number of communities use this. Modules can be developed by the users and it can be propsed to the community later. It can handle large quantity of data without crashing. In postgreSQL bugs can be identified easity so that it is easy to improve and upgrade. This system is also compatible with different types of data. For data serialization, ORM plays an important role. In PostgreSQL, a user does not need to learn ORM seperately to serialize the data. That's a huge benefit of using PostgreSQL. 
+For the building management app, i have chosen **PostgreSQL Database System**. As it is a open source DBMS, it has a wide range of possibilities for further developement. Also a large number of communities use this. Modules can be developed by the users and it can be propsed to the community later. It can handle large quantity of data without crashing. In postgreSQL bugs can be identified easity so that it is easy to improve and upgrade. This system is also compatible with different types of data. For data serialization, ORM plays an important role. In PostgreSQL, a user does not need to learn ORM seperately to serialize the data. That's a huge benefit of using PostgreSQL. Again,Low maintenance and administration for both embedded and enterprise use of PostgreSQL.
+**Drawbacks of PostgreSQL** : PostgreSql does not own by one organisation. As it focuses on compatibility, for speed requirement if any change happens, then it needs more work than MySQL. Some open source apps do not support PostgreSQL. If it is rated for performance, then it is slower than MYSQL.
+<br>
+## Benefits of ORM
+ORM(Object Relational Mapping) is a layer between the relational database and the programming language. It lets the user to query and manipulate data without using the sql commands in the code. A developer can write the code in his preferred language without SQL statements. 
+<br>
+**Functionalities of ORM**
+* It connects to the database server.
+* It generates Query.
+* It sanitize the parameters if it is needed.
+* It fetches data and serialize it.
+* It secures the query.
+**Advantages of ORM**
+* As ORM queries and manipulates data so no need to remember SQL commands.
+* For creating a portable format, data serialization is necessary which is done by ORM.
+
+
+
+
 
 
 
