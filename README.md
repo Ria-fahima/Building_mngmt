@@ -32,6 +32,7 @@ ORM(Object Relational Mapping) is a layer between the relational database and th
 * It fetches data and serialize it.
 * It secures the query.
 <br>
+<br>
 **Advantages of ORM**
 * As ORM queries and manipulates data so no need to remember SQL commands.
 * For creating a portable format, data serialization is necessary which is done by ORM.
@@ -43,13 +44,138 @@ For checking the authetication of a user, there are two endpoints.
 * When a user wants to register to the app,
 <br>
 127.0.0.1:8080/auth/register
+<br>
+<br>
 * When a user wants to login to the app,
 <br>
 127.0.0.1:8080/auth/login
 <br>
+<br>
+<br>
+All the users can see the user table in the database so that they can have the idea of the existing database.
+<br>
+To get all users,
+<br>
+127.0.0.1:8080/users
+<br>
+<br>
+To get the certain user information by using the id. To get only one user at a time with the id,
+<br>
+127.0.0.1:8080/users/id   ; here id = 1/2/3 etc and it is the user_id
+<br>
+<br>
+To have the information about the existing residents, the below API will work.
+<br>
+127.0.0.1:8080/users/residents
+<br>
+<br>
+To get only one resident information, his/her id will be needed here.
+<br>
+127.0.0.1:8080/users/residents/id   ; here id is the resident_id
+<br>
+<br>
+A building Manager who is the admin of this app can add a resident from the existing user table. For that reason, with certain information of the residents and the user_id of the resident is needed.
+<br>
+127.0.0.1:8080/users/residents/id   ; Here the method will be **post** and id is the **user_id** and the authorization is required.
+<br>
+<br>
+If a resident leave the apartment, then all information will be deleted by the Manager.
+<br>
+127.0.0.1:8080/users/residents/id  ;  Here the method will be **delete** and id is the **resident_id** and the authorization is required.
+<br>
+<br>
+For updating any information of a resident,
+<br>
+127.0.0.1:8080/users/residents/id  ; Here the method will be **put/patch** and id is the **resident_id** and the authorization is required.
+<br>
+<br>
+<br>
+To have the information about the existing staffs, the below API will work.
+<br>
+127.0.0.1:8080/users/staffs
+<br>
+<br>
+To get only one staff information, his/her id will be needed here.
+<br>
+127.0.0.1:8080/users/staffs/id   ; here id is the staff_id
+<br>
+<br>
+A building Manager who is the admin of this app can add a resident from the existing user table. For that reason, with certain information of the residents and the user_id of the resident is needed.
+<br>
+127.0.0.1:8080/users/staffs/id   ; Here the method will be **post** and id is the **user_id** and the authorization is required.
+<br>
+<br>
+If a staff leave his/her job, then all information will be deleted by the Manager.
+<br>
+127.0.0.1:8080/users/staffs/id  ;  Here the method will be **delete** and id is the **staff_id** and the authorization is required.
+<br>
+<br>
+For updating any information of a staff,
+<br>
+127.0.0.1:8080/users/staffs/id  ; Here the method will be **put/patch** and id is the **staff_id** and the authorization is required.
+<br>
+<br>
+The users can complain if anything happens. To get all complains,
+<br>
+127.0.0.1:8080/complains 
+<br>
+<br>
+To get a specific complain with complain_id,
+<br>
+127.0.0.1:8080/complains/id   ; here id = complain_id
+<br>
+<br>
+If a user wants to post a complain then,
+<br>
+127.0.0.1:8080/complains  ; Here the method is **post**
+<br>
+<br>
+A user can delete any complain_id if it's needed.
+<br>
+127.0.0.1:8080/complains/id  ; Here the method is **delete** and id will be **complain_id**
+<br>
+<br>
+If a user wants to updte something in the message of the complain section, it is allowed to do. 
+<br>
+127.0.0.1:8080/complains/id  ; Here the method is **put/patch** and id will be **complain_id**
+<br>
+<br>
+<br>
+The user needs to know all upcoming annoucements/meetings. 
+<br>
+127.0.0.1:8080/annoucements  
+<br> 
+<br>
+To get the specific annoucement with annoucement_id,
+<br>
+127.0.0.1:8080/annoucements/id  ; here id = annoucement_id
+<br>
+<br>
+If the Manager wants to post an annoucement/ meeting, then the below API will be needed.
+<br>
+127.0.0.1:8080/annoucements  ; Here method will be **Post** and authorization is needed.
+<br>
+<br>
+Sometimes meeting/annoucements can be cancelled. So to delete the annoucement,
+<br>
+127.0.0.1:8080/annoucements/id  ;  Here method will be **delete** and authorization is needed and id = annoucement_id.
+<br>
+<br>
+To update any information of the annoucement, An admin(Building Manager) need to apply the below API endpoint,
+<br>
+127.0.0.1:8080/annoucements/id ;  Here method will be **put/patch** and authorization is needed and id = annoucement_id.
+<br>
+<br>
+Any user can comment in the annoucement. To post the comment the below endpoint will work.
+<br>
+127.0.0.1:8080/annoucements/id/comments   ;  Here method will be **post**  and id = annoucement_id.
+
+
 ## ERD of the Building App
 <br>
-![Screen Shot 2022-11-12 at 2 53 23 am](https://user-images.githubusercontent.com/105357829/201378873-adf6d1d9-027f-47c4-a69a-f7be8120c4df.png)
+![Screen Shot 2022-11-12 at 2 53 23 am](https://user-images.githubusercontent.com/105357829/201440679-33aaeea6-928a-436f-b0ed-ee3940cb6729.png)
+
+<br>
 
 
 
