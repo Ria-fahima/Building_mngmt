@@ -45,3 +45,13 @@ def authorize():
     user = db.session.scalar(stmt)
     if not user.is_admin:
         abort(401)
+
+
+def authorize_resident():
+    user_id = get_jwt_identity()
+    stmt = db.select(User).filter_by(id = user_id)
+    user = db.session.scalar(stmt)
+    new_id = user.id
+    
+    if not user.is_admin:
+        abort(401)

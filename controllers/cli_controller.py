@@ -157,13 +157,15 @@ def seed_db():
     complains = [
         Complain(
             date = date.today(),
-            resident = residents[0],
+            user = users[1],
+            unit = 301,
             title = 'Water hose pipe defect',
             message = 'Unit 504 bathroom water pipe is defected. Need to repair it urgently.'
         ),
         Complain(
             date = date.today(),
-            resident = residents[1],
+            user = users[2],
+            unit = 404,
             title = 'noise from unit 603',
             message = 'Loud noise is coming from unit 603 after midnight.'
         )

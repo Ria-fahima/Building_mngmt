@@ -1,6 +1,6 @@
 from init import db,ma
 from marshmallow import fields
-
+from marshmallow.validate import Length
 class Resident(db.Model):
     __tablename__ = 'residents'
 
@@ -11,19 +11,20 @@ class Resident(db.Model):
     is_owner = db.Column(db.Boolean, default=False)
 
 
-    # code valid
+    
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     staff_id = db.Column(db.Integer, db.ForeignKey('staffs.id'), nullable=False)
     
     user = db.relationship('User', back_populates='resident', cascade='all, delete')
     staff = db.relationship('Staff', back_populates='residents')
-    complains = db.relationship('Complain', back_populates='resident', cascade='all, delete')
-    # code valid
+    
 
 class ResidentSchema(ma.Schema):
-    complain = fields.List(fields.Nested('ComplainSchema', exclude= ['resident']))
+    
     user = fields.Nested('UserSchema', only = ['f_name', 'l_name'])
+    unit = fields.String(required= True, validate= Length(min=3, error = "Each Unit field has 3 characters"))
 
     class Meta:
-        fields = ('id', 'fob_num','car_num','unit', 'is_owner', 'user','complain')
+        
+        fields = ('id', 'fob_num','car_num','unit', 'is_owner', 'user')
         ordered = True

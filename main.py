@@ -28,7 +28,9 @@ def create_app():
     def validation_error(err):
         return {'error': err.messages},400
     
-
+    @app.errorhandler(ValueError)
+    def value_error(err):
+        return {'error': f'The field has {err}.'}, 400
 
     @app.errorhandler(KeyError)
     def key_error(err):
