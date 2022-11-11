@@ -34,10 +34,11 @@ ORM(Object Relational Mapping) is a layer between the relational database and th
 <br>
 <br>
 **Advantages of ORM**
-* As ORM queries and manipulates data so no need to remember SQL commands.
-* For creating a portable format, data serialization is necessary which is done by ORM.
+<br>
+As ORM queries and manipulates data so no need to remember SQL commands. For creating a portable format, data serialization is necessary which is done by ORM.
 <br>
 ## Documentation of all endpoints API
+<br>
 In the app, there are some API endpoints. Using those endpoints, certain operations can be done. 
 For checking the authetication of a user, there are two endpoints.
 <br>
@@ -173,9 +174,22 @@ Any user can comment in the annoucement. To post the comment the below endpoint 
 
 ## ERD of the Building App
 <br>
+The ERD image is given below-
+<br>
 ![Screen Shot 2022-11-12 at 2 53 23 am](https://user-images.githubusercontent.com/105357829/201440679-33aaeea6-928a-436f-b0ed-ee3940cb6729.png)
 
 <br>
+
+## PYPI Packages
+In my app, i have used some PYPI packages which are not built-in. 
+1. Flask pip: This pip is installed to run and function the flask app that is created.
+2. flask-marshmallow: This pip package does the ORM function. So data is sanitized and serialized.
+3. flask-jwt-extended : To create the JWT token and have the identity from the token some functions are used. Those functions are included in flask-jwt-extended pip package.
+4. flask-SQLAlchemy : This pip pacakge helps to create the SQL tables in the programming language. Without using the regular format to make an SQL table, this package creates a model for the variables.
+5. psycopg2: THis one is the databse adapter. To complete implementation in python and to perform the thread safety this package works a lot.
+6. python-dotenv : This package reades the key value from the dot file. In my code, there are two dot files(.env, .flaskenv). This structure is usually used in developement process.
+7. flask-bcrypt : For security purposes, password and other informative and sensitive data need to be secured. For this reason, flask-bcrypt is used. By applying the hashing method to the password, this process is done. So that it is quite impossible to get the password to hack the data.
+
 
 
 
