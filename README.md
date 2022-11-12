@@ -252,7 +252,26 @@ In the Complain Model, There is a primary key id which is a integer. A date colu
 <br>
 **Relationship with the Complain Model**
 In the complain model, there is only one relationship with the user as users can complain and have the accessibility to do this.
-
+<br>
+<br>
+## Database Relationships in the application
+In the application, there are many relationships that have beeen implemented in the database. In the ERD model the relationship can be identified easily.
+<img width="465" alt="Screen Shot 2022-11-12 at 1 45 46 pm" src="https://user-images.githubusercontent.com/105357829/201453070-1021cb54-bc55-40bd-86e6-13e9f02a9c3f.png">
+In the ErD model, the users table and the staffs table are related. After registering and putting details in the login information a user is exist in the users table. but later an authorised staff from the staffs table(who is the admin) can add staff from the new users. Also, The users table and the staffs table has the one-to-one connection. That means a user can be one and only staff in the staffs table if the criteria matches. 
+<br>
+Again, in the ERD Model, it is clearly visible that in the Users table and the complains table there is a one-to-many relationship. So, a user(either resident or a staff) can write many complains. Same for the relation between Users table and Comments table. A user can comment as many as he/she wants. 
+<br>
+<img width="452" alt="Screen Shot 2022-11-12 at 1 54 52 pm" src="https://user-images.githubusercontent.com/105357829/201453321-b87ff7db-ca86-4ac0-a2de-9c1f7fb5bd8f.png">
+In the Users table and the residents table, there is a relation between them which is one-to-one relationship. A user can be one and only resident in the app. 
+<br>
+For adding the resident to the residents table, an authorised admin (who is also a staff) can add. So here is a relationship between the residents table and staffs table and that is one-to-many relationship.
+<img width="720" alt="Screen Shot 2022-11-12 at 1 59 22 pm" src="https://user-images.githubusercontent.com/105357829/201453473-a18c72d6-6681-44de-b031-131ff9619b11.png">
+So, an authorized staff can add residents as many as he/she wants to.
+<br>
+There is a relation between the staff table and the annoucements table. This one is one-to-many relationship as an authorised admin or staff can make more than one annoucements.
+<img width="455" alt="Screen Shot 2022-11-12 at 2 03 19 pm" src="https://user-images.githubusercontent.com/105357829/201453624-62dfa6e6-325d-44aa-872d-aabfe046297d.png">
+<br>
+Again, there is a relationship betweeen annoucements and comments table. This relationship is one-to-many. As in the annoucements table there can be one or more comments that has been done by the users.
 
 
 
