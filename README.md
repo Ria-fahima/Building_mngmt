@@ -300,6 +300,14 @@ After setting up these things, the programming language will be connected to the
 <br> 
 It is a secret key for the JSON Web Token. For security reasons of an app, this information is hidden deliberately. 
 <br>
+There are mainly 5 phases to complete an entire project management system. Those steps are given below-
+* Project Initiation : At first, an idea should come up to solve a problem. The main concern is what benefits can be achieved by solving the problem, what are the main goals etc. In my app, some problems have been identified in the building management system that need to be solved. The main goals to build up this app are the users can make complains if they needed, all information about the residents and staffs will be stored. if there is any annoucement, the users can know about it and comment their opinion.
+* Project Planning: In this process, a planning is done so that it is easy to proceed. This determines that how the things should go, what steps should be taken to build the app with proper guidance. In this phase, how many models should be created and what will be the connection among those models are determined. Also, the number of controllers and routes are assumed in this planning phase. This phase is very crucial. Before implementing the code, a proper planning is needed for efficiency. If the planning works out properly then the path is comparatively easy to code.
+<br>
+Also in this phase, the ERD and modling are created to establish what the outcome will be by implementing those relationships among those tables.
+* Project Execution: After coding the app, in this phase the result is executed. This phase is the most important part as it relates to the code which is the main factor for the project. While coding the app, DRY principles and other requirements are considered so that the code is effective. All the functions, schemas, controllers, routes etc are structured in this way so that it worked properly. 
+* Monitoring & Controlling: After execution, the code need to be kept under monitoring. If any routes or function or anything is not working according to the code, then the problem should be found out and take the further process to solve this. Everytime in the testing process, a lot of bugs come out and then developers handle those bugs precisely. This phase really improves coding and make it more professional.
+* Project Closing: After all of the above steps, the project can be considered to it's final position where the developer get the output exactly what he/she wants. Also, if there is any kind of misleading value, the final phase of an app should handle those.
 
 
 
