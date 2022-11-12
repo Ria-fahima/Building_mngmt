@@ -173,9 +173,6 @@ Any user can comment in the annoucement. To post the comment the below endpoint 
 
 
 ## ERD of the Building App
-<br>
-The ERD image is given below-
-<br>
 ![Screen Shot 2022-11-12 at 2 53 23 am](https://user-images.githubusercontent.com/105357829/201440679-33aaeea6-928a-436f-b0ed-ee3940cb6729.png)
 
 <br>
@@ -189,6 +186,42 @@ In my app, i have used some PYPI packages which are not built-in.
 5. psycopg2: THis one is the databse adapter. To complete implementation in python and to perform the thread safety this package works a lot.
 6. python-dotenv : This package reades the key value from the dot file. In my code, there are two dot files(.env, .flaskenv). This structure is usually used in developement process.
 7. flask-bcrypt : For security purposes, password and other informative and sensitive data need to be secured. For this reason, flask-bcrypt is used. By applying the hashing method to the password, this process is done. So that it is quite impossible to get the password to hack the data.
+
+## Project Model and Relationship of the elements in the Model
+### User Model
+![Screen Shot 2022-11-12 at 10 37 35 am](https://user-images.githubusercontent.com/105357829/201444588-6a151b01-8f72-40ba-a4b6-f40987f101b0.png)
+<br>
+<br>
+In the User Model, all the information of the registered users can be achieved. The tablename for the User Model has been set as users. There is a id for th user which is unique for the users table. This is why it is the primary key and data type of id is integer. Then f_name(first_name) is a column of the table which is a string data type and can not be null while registering as a user. Next, l_name(last name) has the same properties like f_name. There is a column in the users table which is email, It is a string data type, can not be null and must be unique from other users. 
+<br>
+<br>
+**Relationship with the User Model**
+The User Model has the relationship with the Comment Model. In theUser Model, the parent and child model relationship has been established where a user can make multiple comments.Again, similarly a resident and a user has a relationship between them. Also, a user can be a staff in this app so that there is a relationship between these Models as well. Finally, a user can complain so that there is a relation between them.
+<br>
+<br>
+### Staff Model
+![Screen Shot 2022-11-12 at 11 15 12 am](https://user-images.githubusercontent.com/105357829/201446691-02ed081b-4e14-4f57-bbae-7bd030144fc1.png)
+<br>
+<br>
+In the Staff Model, There is a table called staffs. Also in the table, for each staff a unique id is created whose data type is integer and which is a primary key. There is a string data type which is named as role to categorized the position of the staff. Also, for many functions, the authority is given only to the admin so that is_admin is another column which has been created. This is_admin data type is boolean and it's default value is false. In the Staff Model, a foreign key has been used which is the user_id. This can not be null and it's data type is integer. 
+<br>
+<br>
+**Relationship with the Staff Model**
+In the Staff Model, there are few realtionships. The Staff Model is firstly related to the User Model. Again, The staff model has a relationship with the Annoucement Model so that an authorized staff can call/create many annoucements. Again, as the authorized staff can add resident from the user so that there is a relationship between the Staff model and the Resident Model.
+<br>
+<br>
+### Resident Model
+![Screen Shot 2022-11-12 at 11 28 12 am](https://user-images.githubusercontent.com/105357829/201447420-5721be16-1dde-4f4d-8779-1a2ade765b8f.png)
+<br>
+<br>
+In the Resident Model, a table is created named residents. There is a id which data type is integer and it is the the primary key of the table. A fob column has been established where the fob number is stored for the resident. Initially, it can be empty. This fob_num datatype is integer. There is a column for the car number which is named as car_num. This element's datatype is string. There is a unit column where the unit of the residents need to be stored.This unit datatype is integer and it can not be null. Again,there is another column is_owner which is false by default and it's datatype is booolean. There are two foreign keys which has been used. One is the user_id, this one demonstrates that the resident is a user before. This foreign key data type is integer and can not be null. On the other hand, there is another foreign key which is staff_id, this one is also integer and it can not be null as well. As an authorized staff can add a user to the resident database that is why this staff_id is also needed.
+<br>
+<br>
+**Relationship with the Resident Model**
+In the Resident Model, there are two relationship with this. One is with the User Model and it has also cascade delete so that when the resident will leave the apartment , the user will be automatically deleted. Another relationship is between the Staff Model and Resident Model.
+
+
+
 
 
 
