@@ -20,6 +20,7 @@ The admin can also add, delete or update any information of a staff from the use
 A user can complain in this app which is convenient to the user.
 ## Database System
 For the building management app, i have chosen **PostgreSQL Database System**. As it is a open source DBMS, it has a wide range of possibilities for further developement. Also a large number of communities use this. Modules can be developed by the users and it can be propsed to the community later. It can handle large quantity of data without crashing. In postgreSQL bugs can be identified easity so that it is easy to improve and upgrade. This system is also compatible with different types of data. For data serialization, ORM plays an important role. In PostgreSQL, a user does not need to learn ORM seperately to serialize the data. That's a huge benefit of using PostgreSQL. Again,Low maintenance and administration for both embedded and enterprise use of PostgreSQL.
+<br>
 **Drawbacks of PostgreSQL** : PostgreSql does not own by one organisation. As it focuses on compatibility, for speed requirement if any change happens, then it needs more work than MySQL. Some open source apps do not support PostgreSQL. If it is rated for performance, then it is slower than MYSQL.
 <br>
 ## Benefits of ORM
@@ -280,6 +281,23 @@ There is a relation between the staff table and the annoucements table. This one
 <img width="455" alt="Screen Shot 2022-11-12 at 2 03 19 pm" src="https://user-images.githubusercontent.com/105357829/201453624-62dfa6e6-325d-44aa-872d-aabfe046297d.png">
 <br>
 Again, there is a relationship betweeen annoucements and comments table. This relationship is one-to-many. As in the annoucements table there can be one or more comments that has been done by the users.
+<br>
+<br>
+## Project Management Process
+In the app, there are some steps exist that need to be done before working with the code in a perfect manner. In the gitignore file, it is clearly shown that three items are included there so that those things won't be present in the repo. 
+* .venv : .venv is the virtual environment that is excluded in the repo as it really does not make any difference. If a developer works in the virtual environment then if he/she provides his/her code to others then the situation is something like this- "If the recepient does not have the virtual environment, then maybe he/she needs to create one. In the terminal one needs to write the following code - **python3 -m venv .venv**. After creating the environment, he/she needs to activate it with this command in the terminal - **source .venv/bin/activate**, then the virtual environment will be activated.
+* .env : For the security purposes, the file is not included to the repo. But to give an outline that what type of information were in the actual .env file, a sample file of .env is created. In the .env_sample file, the information is not given directly for security reason but some hints are provided so that the developer can guess.
+But for functioning the code properly, the hidden things are revealed below-
+* **Database URL** : DATABASE_URL = postgresql+psycopg2://rockwall_user:rockpass123@127.0.0.1:5432/rockwall_apt
+<br>
+Here, rockwall_apt is the database that needs to be created in the recepient PostgreSQL with the command - **create database rockwall_apt**
+<br>
+Again, here **rockwall_user** is the user who get the access for the certain database and the password for the user should be set as **rockpass123**. 
+<br>
+After setting up these things, the programming language will be connected to the SQL commands. 
+* **JWT SECRET KEY** : JWT_SECRET_KEY = 'hello rockstars'
+<br> 
+It is a secret key for the JSON Web Token. For security reasons of an app, this information is hidden deliberately. 
 <br>
 
 
