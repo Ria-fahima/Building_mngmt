@@ -303,6 +303,18 @@ After setting up these things, the programming language will be connected to the
 <br> 
 It is a secret key for the JSON Web Token. For security reasons of an app, this information is hidden deliberately. 
 <br>
+Another file which is .flaskenv is hidden for confedentiality purposes.
+The values are given below - 
+<br>
+.flaskenv
+<br>
+FLASK_APP = main
+<br>
+FLASK_DEBUG =1 
+<br>
+FLASK_RUN_PORT = 8080
+<br>
+### 5 steps for Project Mnagement Process:
 There are mainly 5 phases to complete an entire project management system. Those steps are given below-
 <br>
 <br>
