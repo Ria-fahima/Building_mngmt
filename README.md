@@ -180,13 +180,13 @@ Any user can comment in the annoucement. To post the comment the below endpoint 
 
 ## PYPI Packages
 In my app, i have used some PYPI packages which are not built-in. 
-1. Flask pip: This pip is installed to run and function the flask app that is created.
-2. flask-marshmallow: This pip package does the ORM function. So data is sanitized and serialized.
-3. flask-jwt-extended : To create the JWT token and have the identity from the token some functions are used. Those functions are included in flask-jwt-extended pip package.
-4. flask-SQLAlchemy : This pip pacakge helps to create the SQL tables in the programming language. Without using the regular format to make an SQL table, this package creates a model for the variables.
-5. psycopg2: THis one is the databse adapter. To complete implementation in python and to perform the thread safety this package works a lot.
-6. python-dotenv : This package reades the key value from the dot file. In my code, there are two dot files(.env, .flaskenv). This structure is usually used in developement process.
-7. flask-bcrypt : For security purposes, password and other informative and sensitive data need to be secured. For this reason, flask-bcrypt is used. By applying the hashing method to the password, this process is done. So that it is quite impossible to get the password to hack the data.
+1. Flask pip: This pip is installed to run and function the flask app that is created. It is a Web application framework. It has the ability to build up a complex app.
+2. flask-marshmallow: This pip package does the ORM function. So data is sanitized and serialized. It is a thin integration layer for flask and marshmallow. It is object relational mapping library that can convert object from the python code and vise versa.
+3. flask-jwt-extended : To create the JWT token and have the identity from the token some functions are used. Those functions are included in flask-jwt-extended pip package. For security purposes and for authentication, JWT is necessary. For some functions in the app which can only be done by the authorised person, get_jwt_identity is used, which is imported from this pip package.
+4. flask-SQLAlchemy : This pip pacakge helps to create the SQL tables in the programming language. Without using the regular format to make an SQL table, this package creates a model for the variables. It is a toolkit that gives efficient and high performing database by accesing the relational databses.
+5. psycopg2: THis one is the databse adapter. To complete implementation in python and to perform the thread safety this package works a lot. To perform PostgreSQL operations using python language, this databse driver is used.
+6. python-dotenv : This package reades the key value from the dot file. In my code, there are two dot files(.env, .flaskenv). This structure is usually used in developement process. It reads the key value from the .env file as put those values in the environment variable.
+7. flask-bcrypt : For security purposes, password and other informative and sensitive data need to be secured. For this reason, flask-bcrypt is used. By applying the hashing method to the password, this process is done. So that it is quite impossible to get the password to hack the data. It gives the bcrypt hashing facilities for the app.
 
 ## Project Model and Relationship of the elements in the Model
 ### User Model
@@ -302,15 +302,26 @@ It is a secret key for the JSON Web Token. For security reasons of an app, this 
 <br>
 There are mainly 5 phases to complete an entire project management system. Those steps are given below-
 <br>
-* Project Initiation : At first, an idea should come up to solve a problem. The main concern is what benefits can be achieved by solving the problem, what are the main goals etc. In my app, some problems have been identified in the building management system that need to be solved. The main goals to build up this app are the users can make complains if they needed, all information about the residents and staffs will be stored. if there is any annoucement, the users can know about it and comment their opinion.
+<br>
+* Project Initiation : At first, an idea should come up to solve a problem. The main concern is what benefits can be achieved by solving the problem, what are the main goals etc. In my app, some problems have been identified in the building management system that need to be solved. The main goals to build up this app are the users can make complains if they needed, all information about the residents and staffs will be stored. if there is any annoucement, the users can know about it and comment their opinion. 
+<br>
 <br>
 * Project Planning: In this process, a planning is done so that it is easy to proceed. This determines that how the things should go, what steps should be taken to build the app with proper guidance. In this phase, how many models should be created and what will be the connection among those models are determined. Also, the number of controllers and routes are assumed in this planning phase. This phase is very crucial. Before implementing the code, a proper planning is needed for efficiency. If the planning works out properly then the path is comparatively easy to code.
 <br>
-Also in this phase, the ERD and modling are created to establish what the outcome will be by implementing those relationships among those tables.
+Also in this phase, the ERD and modling are created to establish what the outcome will be by implementing those relationships among those tables. Again, database create and it's granted user and required password are done in this phase.
 <br>
-* Project Execution: After coding the app, in this phase the result is executed. This phase is the most important part as it relates to the code which is the main factor for the project. While coding the app, DRY principles and other requirements are considered so that the code is effective. All the functions, schemas, controllers, routes etc are structured in this way so that it worked properly. 
+<br>
+* Code Implementation and Project Execution: After coding the app, in this phase the result is executed. This phase is the most important part as it relates to the code which is the main factor for the project. While coding the app, DRY principles and other requirements are considered so that the code is effective. All the functions, schemas, controllers, routes etc are structured in this way so that it worked properly. 
+<br>
+In this phase, models are created to connect with SQL language. Controllers are created to control the models with certain commands. Routes are defined to get the certain output with the unique endpoint API. For analysing whether the code works properly or not, the localhost is connected to the postman. There with all endpoints API we can check whether the desire value comes or not. Flask association are also done in this phase. All the models are connected with each other by foreign key.
+<br>
+There are certain things that can only be done by an authorised person. Those function are also implemented.
+<br>
 <br>
 * Monitoring & Controlling: After execution, the code need to be kept under monitoring. If any routes or function or anything is not working according to the code, then the problem should be found out and take the further process to solve this. Everytime in the testing process, a lot of bugs come out and then developers handle those bugs precisely. This phase really improves coding and make it more professional.
+<br>
+After analysing and monitoring the results from postman, there were certain error comes up that need to be solved. Such as KEYERROR, VALIDATION ERROR, 404,401 etc. if a user mistakenly puts a n input that can bring up false value or error then it need to taken care of. In this phase all those errors are handled properly. Again, there are some validation implemented to the code to make the code more secure like in password Regex function is implemented.
+<br>
 <br>
 * Project Closing: After all of the above steps, the project can be considered to it's final position where the developer get the output exactly what he/she wants. Also, if there is any kind of misleading value, the final phase of an app should handle those.
 
