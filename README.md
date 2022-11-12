@@ -219,6 +219,42 @@ In the Resident Model, a table is created named residents. There is a id which d
 <br>
 **Relationship with the Resident Model**
 In the Resident Model, there are two relationship with this. One is with the User Model and it has also cascade delete so that when the resident will leave the apartment , the user will be automatically deleted. Another relationship is between the Staff Model and Resident Model.
+<br>
+<br>
+### Annoucement Model
+![Screen Shot 2022-11-12 at 11 44 50 am](https://user-images.githubusercontent.com/105357829/201448254-4b7faaeb-f31a-4369-bcbf-6e0eccecd792.png)
+<br>
+<br>
+In the annoucement Model, there is a primary key which unique and is named as id. Again, the data type is integer. There is subject column which can not be nullable and datta type is string. Here the annoucement subject will be stored. Next, there is a column called message, it is a text data type and can not be null. There is a date column where the date of the annoucement will be stored. The data type of date is also date so that it can take the current date while making an annoucement in the app. There is a foreign key which is a integer that is staff_id and it can not be nullable.
+<br>
+<br>
+**Relationship with the Annoucement Model**
+In the Annoucement Model, there is a relationship between the STaff Model and the Annucement Model. As an authorized staff can make one or many annoucements. Again, there is a relationship between the Comment Model and the Annoucement Model as in the annoucement segment multiple comments can be existed.
+<br>
+<br>
+### Comment Model
+![Screen Shot 2022-11-12 at 11 56 00 am](https://user-images.githubusercontent.com/105357829/201448778-8f9f5d41-7792-4c5a-85d9-a1019551bc56.png)
+<br>
+<br>
+In the Comment Model, there will be an integer type id which will be the primary key. then there is a message column which data type is text. Again, there is a date column, which will store the date when the comment will be created in the database. The data type of date is date. There are two foreign keys. One is user_id another one is annoucement_id.
+<br>
+<br>
+**Relationship with the Comment Model**
+There are mainly two relationship in the Comment Model. One relationship is with the User Model as a user can comment in the Comment Model and another relationship is with the Anooucement Model as in one annoucement there can be many comments.
+<br>
+<br>
+### Complain Model
+![Screen Shot 2022-11-12 at 12 02 57 pm](https://user-images.githubusercontent.com/105357829/201449122-a2e329e6-7e30-4b9c-9176-149682a680f9.png)
+<br>
+<br>
+In the Complain Model, There is a primary key id which is a integer. A date column is created where the complain date will be stored and the data type of the column is date. Next, there is a unit column which is integer as well. The title of the complain is stored in the title column and which data type is string. There is a message column where the complain is written with a brief explanation. In the Complain Model, there is also a foreign key user_id. This user_id data type is integer and it can not be null.
+<br>
+<br>
+**Relationship with the Complain Model**
+In the complain model, there is only one relationship with the user as users can complain and have the accessibility to do this.
+
+
+
 
 
 
