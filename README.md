@@ -256,6 +256,7 @@ In the complain model, there is only one relationship with the user as users can
 <br>
 ## Database Relationships in the application
 In the application, there are many relationships that have beeen implemented in the database. In the ERD model the relationship can be identified easily.
+<br>
 <img width="465" alt="Screen Shot 2022-11-12 at 1 45 46 pm" src="https://user-images.githubusercontent.com/105357829/201453070-1021cb54-bc55-40bd-86e6-13e9f02a9c3f.png">
 <br>
 In the ErD model, the users table and the staffs table are related. After registering and putting details in the login information a user is exist in the users table. but later an authorised staff from the staffs table(who is the admin) can add staff from the new users. Also, The users table and the staffs table has the one-to-one connection. That means a user can be one and only staff in the staffs table if the criteria matches. 
@@ -267,11 +268,13 @@ Again, in the ERD Model, it is clearly visible that in the Users table and the c
 In the Users table and the residents table, there is a relation between them which is one-to-one relationship. A user can be one and only resident in the app. 
 <br>
 For adding the resident to the residents table, an authorised admin (who is also a staff) can add. So here is a relationship between the residents table and staffs table and that is one-to-many relationship.
+<br>
 <img width="720" alt="Screen Shot 2022-11-12 at 1 59 22 pm" src="https://user-images.githubusercontent.com/105357829/201453473-a18c72d6-6681-44de-b031-131ff9619b11.png">
 <br>
 So, an authorized staff can add residents as many as he/she wants to.
 <br>
 There is a relation between the staff table and the annoucements table. This one is one-to-many relationship as an authorised admin or staff can make more than one annoucements.
+<br>
 <img width="455" alt="Screen Shot 2022-11-12 at 2 03 19 pm" src="https://user-images.githubusercontent.com/105357829/201453624-62dfa6e6-325d-44aa-872d-aabfe046297d.png">
 <br>
 Again, there is a relationship betweeen annoucements and comments table. This relationship is one-to-many. As in the annoucements table there can be one or more comments that has been done by the users.
