@@ -290,11 +290,12 @@ In the app, there are some steps exist that need to be done before working with 
 But for functioning the code properly, the hidden things are revealed below-
 * **Database URL** : DATABASE_URL = postgresql+psycopg2://rockwall_user:rockpass123@127.0.0.1:5432/rockwall_apt
 <br>
-Here, rockwall_apt is the database that needs to be created in the recepient PostgreSQL with the command - **create database rockwall_apt**
+Here, rockwall_apt is the database that needs to be created in the recepient PostgreSQL with the command **create database rockwall_apt** .
 <br>
 Again, here **rockwall_user** is the user who get the access for the certain database and the password for the user should be set as **rockpass123**. 
 <br>
 After setting up these things, the programming language will be connected to the SQL commands. 
+<br>
 * **JWT SECRET KEY** : JWT_SECRET_KEY = 'hello rockstars'
 <br> 
 It is a secret key for the JSON Web Token. For security reasons of an app, this information is hidden deliberately. 
