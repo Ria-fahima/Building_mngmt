@@ -1,4 +1,7 @@
 # Building_Management_App
+## Github Repo
+[Building Management App](https://github.com/Ria-fahima/Building_mngmt)
+<br>
 ## Problem Identification
 Nowadays, in many buildings the apartments are being sold to the customer.The residents need to know all information related to the building. There can be some annoucements, meetings which need to be known to the residents. 
 <br>
