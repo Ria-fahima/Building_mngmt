@@ -2,6 +2,7 @@ from init import db,ma
 from marshmallow import fields,validates
 from marshmallow.validate import Length, Regexp
 
+# User Model created
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -12,13 +13,13 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
     
 
-  
+# RElationship with the User MODEL 
     comments = db.relationship('Comment', back_populates='user', cascade='all, delete')
     resident = db.relationship('Resident', back_populates='user', cascade='all, delete')
     staff = db.relationship('Staff', back_populates='user', cascade='all, delete')
     complains = db.relationship('Complain', back_populates='user', cascade='all, delete')
    
-
+# USER Schema is created
 class UserSchema(ma.Schema):
     complains = fields.List(fields.Nested('ComplainSchema', exclude= ['user']))
     
@@ -28,6 +29,7 @@ class UserSchema(ma.Schema):
     email = fields.String(required= True, validate= Length(min=2, error= "Email should be at least 2 characters"))
     password = fields.String(required=True, validate= Regexp('^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@?#$%^&+=]).*$', error = 'Password must be at least 8 characters, one lowercase letter(a-z), one uppercase letter(A-Z) and one special characters(@?#$%^&+=)'))
 
+# validate email address
     @validates('email')
     def validate_email(self, value):
         if '@' not in value:

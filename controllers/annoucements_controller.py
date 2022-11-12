@@ -10,6 +10,7 @@ from controllers.auth_controller import authorize
 
 annoucement_bp = Blueprint('annoucements', __name__, url_prefix='/annoucements')
 
+# To get all annoucements
 @annoucement_bp.route('/')
 @jwt_required()
 def get_all_annoucements():
@@ -18,7 +19,7 @@ def get_all_annoucements():
     annoucements = db.session.scalars(stmt)
     return AnnoucementSchema(many= True).dump(annoucements)
 
-
+# To get a certain annoucement with an annoucement id
 @annoucement_bp.route('/<int:id>/')
 @jwt_required()
 def get_one_annoucement(id):
@@ -29,7 +30,7 @@ def get_one_annoucement(id):
     else:
         return {'error': f'annoucement not found with id {id}'}, 404
 
-
+# add a new annoucement
 @annoucement_bp.route('/',methods=['POST'])
 @jwt_required()
 def create_one_annoucement():
@@ -46,6 +47,7 @@ def create_one_annoucement():
     db.session.commit()
     return AnnoucementSchema().dump(annoucement), 201
 
+# delete a Annoucement with id
 @annoucement_bp.route('/<int:id>/' , methods=['DELETE'])
 @jwt_required()
 def delete_one_annoucement(id):
@@ -60,7 +62,7 @@ def delete_one_annoucement(id):
     else:
         return {'error' : f'Annoucement is not found for id {id} '}
 
-
+# update any information of the annoucement with id
 @annoucement_bp.route('/<int:id>/', methods = ['PUT', 'PATCH'])
 @jwt_required()
 def update_one_annoucement(id):
@@ -78,7 +80,7 @@ def update_one_annoucement(id):
         return {'error': f'Annoucement is not found with id {id}'}, 404
 
 
-
+# Create a new comment in the existing annoucements with certain announcement id
 @annoucement_bp.route('/<int:id>/comments',methods=['POST'])
 @jwt_required()
 def create_comment(id):

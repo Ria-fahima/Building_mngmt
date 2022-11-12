@@ -8,6 +8,7 @@ from controllers.auth_controller import authorize
 
 complain_bp = Blueprint('complains', __name__, url_prefix='/complains')
 
+# To get all complains
 @complain_bp.route('/')
 @jwt_required()
 def get_all_complains():
@@ -16,7 +17,7 @@ def get_all_complains():
     complains = db.session.scalars(stmt)
     return ComplainSchema(many = True).dump(complains)
 
-
+# To get a certain complain with the complain id
 @complain_bp.route('/<int:id>/')
 @jwt_required()
 def get_one_complain(id):
@@ -28,7 +29,7 @@ def get_one_complain(id):
         return {'error': f'No complain is found with {id}'}, 404
 
 
-
+# To create a post for the new complain
 @complain_bp.route('/',methods=['POST'])
 @jwt_required()
 def create_one_complain():
@@ -47,7 +48,7 @@ def create_one_complain():
     return ComplainSchema().dump(complain), 201
 
 
-
+# To delete an existing Complain with complain id
 @complain_bp.route('/<int:id>/' , methods=['DELETE'])
 @jwt_required()
 def delete_one_complain(id):
@@ -61,7 +62,7 @@ def delete_one_complain(id):
     else:
         return {'error' : f'No complain is found with id {id} '}
 
-
+# To change/update any information of a complain by providing a complain id
 @complain_bp.route('/<int:id>/', methods = ['PUT', 'PATCH'])
 @jwt_required()
 def update_one_complain(id):

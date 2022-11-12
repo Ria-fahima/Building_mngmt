@@ -8,6 +8,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+# Register new user with certain information to User Model
 @auth_bp.route('/register/',methods=['POST'])
 def auth_register():
     try:
@@ -27,6 +28,7 @@ def auth_register():
     except IntegrityError:
         return {'error': 'Email address already in use'}, 409
 
+# Login as a user with some information by using User Model
 @auth_bp.route('/login/',methods=['POST'])
 def auth_login():
     stmt = db.select(User).filter_by(email = request.json['email'])
@@ -38,7 +40,7 @@ def auth_login():
         return {'error': 'Invalid email or password'},401
 
 
-
+# authorization in the Staff Model
 def authorize():
     user_id = get_jwt_identity()
     stmt = db.select(Staff).filter_by(id = user_id)
@@ -46,12 +48,4 @@ def authorize():
     if not user.is_admin:
         abort(401)
 
-
-def authorize_resident():
-    user_id = get_jwt_identity()
-    stmt = db.select(User).filter_by(id = user_id)
-    user = db.session.scalar(stmt)
-    new_id = user.id
     
-    if not user.is_admin:
-        abort(401)

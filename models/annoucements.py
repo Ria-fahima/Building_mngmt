@@ -1,7 +1,7 @@
 from init import db,ma
 from marshmallow import fields
 
-
+# Annoucement Model is created
 class Annoucement(db.Model):
     __tablename__ = 'annoucements'
 
@@ -11,13 +11,14 @@ class Annoucement(db.Model):
     date = db.Column(db.Date)
 
 
-    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+   # Foreign key for annoucement model 
     staff_id = db.Column(db.Integer, db.ForeignKey('staffs.id'), nullable=False)
 
-    # user = db.relationship('User', back_populates='annoucements')
+   # Relationships with the Annoucement model
     staff = db.relationship('Staff', back_populates='annoucements')
     comments = db.relationship('Comment', back_populates='annoucement', cascade='all, delete')
-
+    
+# Annoucement Schema
 class AnnoucementSchema(ma.Schema):
     user = fields.Nested('UserSchema', only=['f_name', 'l_name','email'])
     comments = fields.List(fields.Nested('CommentSchema', exclude=['annoucement']))

@@ -11,63 +11,52 @@ from init import db,bcrypt
 
 db_commands = Blueprint('db', __name__)
 
+# All tables are created
 @db_commands.cli.command('create')
 def create_db():
     db.create_all()
     print("Tables created")
 
+# All tables are dropped
 @db_commands.cli.command('drop')
 def drop_db():
     db.drop_all()
     print("Tables dropped")
 
+# All tables are seeded with ceratin values
 @db_commands.cli.command('seed')
 def seed_db():
+    # For User Model some inputs are seeded
     users = [
         User( 
             f_name = 'Mickel',
             l_name = 'Rowston',
             email = 'admin@gmail.com',
-            # fob_num = 3465,
-            # car_num = 'WRT-466',
             password = bcrypt.generate_password_hash('eggs').decode('utf-8')
-            # is_admin = True,
-            # unit = 100
         ),
         User(
             f_name = 'Ron',
             l_name = 'Sharma',
             email = 'ron33@gmail.com',
-            # fob_num = 3186,
-            # car_num = 'AZW-BRB',
-            # unit = 304,
             password = bcrypt.generate_password_hash('ronty').decode('utf-8')
-            # is_owner = True
         ),
         User(
             f_name = 'John',
             l_name = 'Waples',
             email = 'john74@gmail.com',
-            # fob_num = 3186,
-            # car_num = 'AZW-BRB',
-            # unit = 304,
             password = bcrypt.generate_password_hash('jin45').decode('utf-8')
-            # is_owner = True
         ),User(
             f_name = 'Betzy',
             l_name = 'Wawn',
             email = 'bet96@gmail.com',
-            # fob_num = 3186,
-            # car_num = 'AZW-BRB',
-            # unit = 304,
             password = bcrypt.generate_password_hash('bee088').decode('utf-8')
-            # is_owner = True
         )
     ]
 
     db.session.add_all(users)
     db.session.commit()
 
+ #For Staff Model some inputs are seeded
     staffs = [
         Staff(
             role = "Manager",
@@ -83,7 +72,7 @@ def seed_db():
     db.session.add_all(staffs)
     db.session.commit()
 
-
+#For Resident Model some inputs are seeded
     residents = [
         Resident(
             fob_num = 4867,
@@ -104,6 +93,7 @@ def seed_db():
     db.session.add_all(residents)
     db.session.commit()
 
+#For annoucement Model some inputs are seeded
 
     annoucements = [
         Annoucement(
@@ -130,6 +120,7 @@ def seed_db():
     db.session.add_all(annoucements)
     db.session.commit()
 
+#For Comment Model some inputs are seeded
     comments = [
         Comment(
             message = 'we will be there!',
@@ -154,6 +145,7 @@ def seed_db():
     db.session.add_all(comments)
     db.session.commit()
 
+#For Complain Model some inputs are seeded
     complains = [
         Complain(
             date = date.today(),
